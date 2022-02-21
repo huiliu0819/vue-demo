@@ -1,9 +1,6 @@
 <template>
   <div class="hello">
-    <!-- <h1 v-jspang="color">{{ num | toUpper }}</h1>
-    <button @click="add">按钮</button>
-    <Loading></Loading> -->
-    <div @click="handleAdd">点击</div>
+    <div @click="clickTest">测试</div>
   </div>
 </template>
 
@@ -18,6 +15,11 @@ export default {
       items: []
     }
   },
+  created() {
+    this.bus.$on('someEvent', (data) => {
+        console.log(data)
+      } )
+  },
   computed: {
     ...mapState({
       count: 'count'
@@ -29,9 +31,13 @@ export default {
   methods: {
     ...mapMutations(['add']),
     handleAdd () {
-      console.log(this.bus)
-      this.bus.$emit('someEvent', 1)
+      this.add(1)
     },
+    clickTest () {
+      this.bus.$on('someEvent', (data) => {
+        console.log(data*2)
+      } )
+    }
   }
 }
 </script>

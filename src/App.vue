@@ -1,18 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <h1>Vuex - Demo</h1>
+      count: {{ $store.state.count }} --- msg: {{ $store.state.message  }}
+      <h2>Getter</h2>
+      reverseMsg: {{  $store.getters.reserveMsg }}
+
+      <h2>Mutation</h2>
+      <!-- <button @click="$store.commit('add', 1)">Mutation</button> -->
+      <button @click="$store.commit('add', 2)">Mutation</button>
+      <h2>Action</h2>
+      <button @click="$store.dispatch('addAsync', 4)">Action</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'App'
 }
 </script>
 
